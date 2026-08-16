@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Rahima!</title>
+  <!-- Canvas-Confetti library for full-screen fireworks -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg: #fff5f6;
+      --primary: #ff4b72;
+      --secondary: #ff85a1;
+      --card-bg: #ffffff;
+      --text: #2d3748;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Falling Hearts Background */
+    .heart {
+      position: fixed;
+      top: -10vh;
+      font-size: 1.5rem;
+      user-select: none;
+      pointer-events: none;
+      animation: fall 5s linear infinite;
+      z-index: 99;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Hero Section */
+    header {
+      padding: 100px 20px 80px;
+      background: linear-gradient(135deg, #ff85a1, #ff4b72);
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    
+    .big-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+      animation: pop 0.8s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    p.subtitle { font-size: 1.3rem; opacity: 0.95; margin-bottom: 25px; }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: white;
+      color: var(--primary);
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+    }
+    .cta-button:hover { transform: scale(1.05); }
+
+    /* Layout Sections */
+    section { padding: 50px 20px; max-width: 800px; margin: 0 auto; }
+    h2 { color: var(--primary); font-size: 1.8rem; margin-bottom: 25px; }
+
+    /* Open When... Secret Letter Box */
+    .secret-box {
+      background: var(--card-bg);
+      border: 2px solid var(--secondary);
+      border-radius: 16px;
+      padding: 30px 20px;
+      box-shadow: 0 6px 20px rgba(255, 75, 114, 0.15);
+      margin-bottom: 30px;
+    }
+    .lock-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s ease;
+    }
+    .lock-btn:hover { background: #e03a5f; }
+    .letter-content {
+      display: none;
+      margin-top: 20px;
+      text-align: left;
+      background: #fff9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+      font-style: italic;
+    }
+
+    /* Photo Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    .photo-card {
+      background: var(--card-bg);
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 200px;
+      background: #eee;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* Interactive Memory Cards */
+    .memories { display: flex; flex-direction: column; gap: 15px; }
+    .memory-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+    .memory-card:hover { transform: translateY(-3px); }
+    .memory-hidden { display: none; margin-top: 10px; color: var(--primary); font-weight: 600; }
+
+    /* Digital Vouchers */
+    .coupons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+    .coupon {
+      border: 2px dashed var(--secondary);
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    footer { padding: 40px 20px; font-size: 0.9rem; color: #888; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <header>
+    <h1 class="big-title">Happy Birthday Rahima! 💖🎉</h1>
+    <p class="subtitle">A mini website created just for you on your special day.</p>
+      </header>
+
+  <!-- SPECIAL ADDITION: SECRET LOVE LETTER -->
+  <section>
+    <h2>💌 A Special Note For Rahima</h2>
+    <div class="secret-box">
+      <h3>Open When You Read This...</h3>
+      <p style="margin-top: 10px; color: #666;">I wrote something special for you to read today.</p>
+      <button class="lock-btn" onclick="unlockLetter(this)">Click to Unlock Letter 🔒</button>
+      
+      <div id="secretLetter" class="letter-content">
+        <p>Dear Rahima,</p><br>
+        <p>Happy Birthday to the most amazing person in my life Rahima words truly are not enough to express how much you mean to me my baby and how grateful I am for every single moment we share together ilysmm You bring so much bright light sweet comfort and endless joy into my world just by being you On your special day I wish you endless happiness boundless success and a long healthy and beautiful life ahead full of laughter and my love May this new year bring you all the love peace and pure fulfillment you so deeply deserve my sweet girl and I hope every single one of your biggest dreams comes true I am so incredibly lucky to have you and to walk beside you through everything ilysmm here is to celebrating you today and for all the incredible years to come ❤️i swear i wanna put the biggest smile on your face at all times and i just love you so much </p><br>
+        <p>Always here for you,</p>
+        <p><strong>Yours truly Moiz</strong></p>
+      </div>
+    </div>
+  </section>
+
+   <!-- REASONS / MEMORIES -->
+  <section>
+    <h2>Reasons Why I Love You, Rahima</h2>
+    <div class="memories">
+      <div class="memory-card" onclick="toggleCard(this)">
+        <h3>Reason #1 💖</h3>
+        <p class="memory-hidden">Your Gorgeous smile and beautiful eyes.</p>
+      </div>
+      <div class="memory-card" onclick="toggleCard(this)">
+        <h3>Reason #2 🌟</h3>
+        <p class="memory-hidden">The way you are with me and always make me feel loved. </p>
+      </div>
+      <div class="memory-card" onclick="toggleCard(this)">
+        <h3>Reason #3 ✨</h3>
+        <p class="memory-hidden">All of our late-night talks and playing games together.</p>
+      </div>
+    </div>
+  </section>
+
+   <!-- DIGITAL COUPONS -->
+  <section>
+    <h2>Vouchers for Rahima</h2>
+    <div class="coupons">
+      <div class="coupon">
+        <h3>Pastries!!</h3>
+        <p>Ill buy you yout favourite pastries:P </p>
+      </div>
+      <div class="coupon">
+        <h3> Free stuff </h3>
+        <p>You get to choose one thing ill buy of your choice.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Made with ❤️ for Rahima | 2026 | Made by Moiz Awan.
+  </footer>
+
+  <script>
+    // Unlock secret letter function
+    function unlockLetter(btn) {
+      const letter = document.getElementById('secretLetter');
+      letter.style.display = 'block';
+      btn.style.display = 'none';
+      
+      // Trigger small burst of confetti over letter
+      confetti({
+        particleCount: 40,
+        spread: 60,
+        origin: { y: 0.4 }
+      });
+    }
+
+    // Reveal secret memory cards
+    function toggleCard(card) {
+      const hiddenText = card.querySelector('.memory-hidden');
+      hiddenText.style.display = hiddenText.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Generate falling heart elements
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+      heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => { heart.remove(); }, 6000);
+    }
+    setInterval(createHeart, 300);
+
+    // Launch Fireworks Celebration on page load
+    window.addEventListener('load', () => {
+      const duration = 3 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+
+        const particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+      }, 250);
+    });
+  </script>
+</body>
+</html>
